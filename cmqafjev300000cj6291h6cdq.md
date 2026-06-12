@@ -175,10 +175,18 @@ export default Products;
 
 ## 💡 Interview Q&A
 
-**Q1: How does JavaScript's built-in** `fetch()` **method handle HTTP errors like a 404 or a 500 server crash?** **Ans:** Surprisingly, native `fetch()` does **not** fail or throw an error when a server returns a 404 or 500 code! It completes the request successfully. The only way it throws an error natively is if there is a complete network failure (like losing internet connection). To catch server crashes, we must manually look at `response.ok` and throw an explicit error ourselves.
+**Q1: How does JavaScript's built-in** `fetch()` **method handle HTTP errors like a 404 or a 500 server crash?**
 
-**Q2: Why should we use** `throw` **to bubble errors up instead of managing the toast notification inside the service file itself?** **Ans:** Because service files are purely for logic and data—they don't know anything about the UI layout. If you tie your UI components or toast triggers directly to your service file, you break the separation of concerns. Throwing the error up allows the UI component to decide exactly *how* and *where* to show that error message to the user.
+**Ans:** Surprisingly, native `fetch()` does **not** fail or throw an error when a server returns a 404 or 500 code! It completes the request successfully. The only way it throws an error natively is if there is a complete network failure (like losing internet connection). To catch server crashes, we must manually look at `response.ok` and throw an explicit error ourselves.
 
-**Q3: What property on a standard JavaScript** `Error` **object contains the actual message string we pass into it?** **Ans:** When you create an error using `new Error("My custom error text")`, your text string is stored automatically inside the `.message` property. In your catching code blocks, you read `error.message` to get that exact text string back cleanly.
+**Q2: Why should we use** `throw` **to bubble errors up instead of managing the toast notification inside the service file itself?**
 
-**Q4: Why is it bad practice to pass success/failure boolean flags from services back to components instead of throwing errors?** **Ans:** Using boolean flags (like returning `{ success: false }`) forces you to write redundant `if/else` checks across every component in your application. Using a standard `try/catch` with thrown errors allows JavaScript to halt execution immediately when something goes wrong, making your code easier to read and maintain.
+**Ans:** Because service files are purely for logic and data—they don't know anything about the UI layout. If you tie your UI components or toast triggers directly to your service file, you break the separation of concerns. Throwing the error up allows the UI component to decide exactly *how* and *where* to show that error message to the user.
+
+**Q3: What property on a standard JavaScript** `Error` **object contains the actual message string we pass into it?**
+
+**Ans:** When you create an error using `new Error("My custom error text")`, your text string is stored automatically inside the `.message` property. In your catching code blocks, you read `error.message` to get that exact text string back cleanly.
+
+**Q4: Why is it bad practice to pass success/failure boolean flags from services back to components instead of throwing errors?**
+
+**Ans:** Using boolean flags (like returning `{ success: false }`) forces you to write redundant `if/else` checks across every component in your application. Using a standard `try/catch` with thrown errors allows JavaScript to halt execution immediately when something goes wrong, making your code easier to read and maintain.
