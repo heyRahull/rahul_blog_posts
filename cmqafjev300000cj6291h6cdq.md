@@ -142,6 +142,25 @@ export default Products;
 
 *   **Automatic Cleanup (Self-Dismissal):** A robust UI design should ensure toast notification components feature a built-in countdown (e.g., using a `setTimeout` for 5 to 8 seconds) to dismiss themselves, while still offering an optional manually triggered close button.
     
+    ```javascript
+    // src/services/productServices.js
+    import { getAPI } from "./api/baseServices";
+    import { PRODUCT_URL } from "./api/endpoints";
+    
+    export const getProductList = async (limit) => {
+      try {
+        // If limit parameter is missing or broken, getAPI will throw an error
+        const targetUrl = limit ? `${PRODUCT_URL}?limit=${limit}` : PRODUCT_URL;
+        const data = await getAPI(targetUrl);
+        
+        return data.products;
+      } catch (error) {
+        // Bubble the error up to the UI Component
+        throw error;
+      }
+    };
+    ```
+    
 
 ```javascript
 // src/services/productServices.js
