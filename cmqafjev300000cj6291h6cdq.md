@@ -142,32 +142,26 @@ export default Products;
 
 *   **Automatic Cleanup (Self-Dismissal):** A robust UI design should ensure toast notification components feature a built-in countdown (e.g., using a `setTimeout` for 5 to 8 seconds) to dismiss themselves, while still offering an optional manually triggered close button.
     
-    ```javascript
-    // src/components/Toast.jsx
-    import React, { useEffect } from "react";
+
+```javascript
+// src/services/productServices.js
+import { getAPI } from "./api/baseServices";
+import { PRODUCT_URL } from "./api/endpoints";
+
+export const getProductList = async (limit) => {
+  try {
+    // If limit parameter is missing or broken, getAPI will throw an error
+    const targetUrl = limit ? `${PRODUCT_URL}?limit=${limit}` : PRODUCT_URL;
+    const data = await getAPI(targetUrl);
     
-    const Toast = ({ message, onClose }) => {
-      useEffect(() => {
-        // Auto-close after 5 seconds
-        const timer = setTimeout(() => {
-          onClose();
-        }, 5000);
-    
-        // Cleanup timer on unmount
-        return () => clearTimeout(timer);
-      }, [onClose]);
-    
-      return (
-        <div className="toast">
-          <span>{message}</span>
-          <button onClick={onClose}>✕</button>
-        </div>
-      );
-    };
-    
-    export default Toast;
-    ```
-    
+    return data.products;
+  } catch (error) {
+    // Bubble the error up to the UI Component
+    throw error;
+  }
+};
+```
+
 *   **Streamlining Parsing Cycles:** Moving `.json()` conversion out of specific feature layers and placing it directly inside `baseServices.js` means you avoid writing duplicate conversion methods across dozens of feature files.
     
 
