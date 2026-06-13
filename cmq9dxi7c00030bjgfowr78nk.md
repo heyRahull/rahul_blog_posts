@@ -1,8 +1,8 @@
 ---
-title: "React System Design: Layer vs. Feature vs. Hybrid Folder Architecture"
+title: "1.2 Codebase Folder Structure Strategies"
 datePublished: 2026-06-11T10:59:04.687Z
 cuid: cmq9dxi7c00030bjgfowr78nk
-slug: react-system-design-layer-vs-feature-vs-hybrid-folder-architecture
+slug: 1-2-codebase-folder-structure-strategies
 
 ---
 
