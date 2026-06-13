@@ -1,8 +1,8 @@
 ---
-title: "React System Design: API Architecture & Service Layer"
+title: "1.4 API Architecture & Service Layers"
 datePublished: 2026-06-11T09:37:46.029Z
 cuid: cmq9b0xs400000bhpf901bkt5
-slug: react-system-design-api-architecture-service-layer
+slug: 1-4-api-architecture-service-layers
 
 ---
 
