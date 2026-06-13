@@ -1,8 +1,8 @@
 ---
-title: "React System Design: Centralized API Error Handling & Toast Notifications"
+title: "1.5 Centralized API Error Handling"
 datePublished: 2026-06-12T04:31:52.601Z
 cuid: cmqafjev300000cj6291h6cdq
-slug: react-system-design-centralized-api-error-handling-toast-notifications
+slug: 1-5-centralized-api-error-handling
 
 ---
 
