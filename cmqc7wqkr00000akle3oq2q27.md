@@ -1,8 +1,8 @@
 ---
-title: "Composable Components in React"
+title: "1.12 Composable Components in React"
 datePublished: 2026-06-13T10:33:49.740Z
 cuid: cmqc7wqkr00000akle3oq2q27
-slug: composable-components-in-react
+slug: 1-12-composable-components-in-react
 
 ---
 
