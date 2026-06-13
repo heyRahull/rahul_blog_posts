@@ -1,8 +1,8 @@
 ---
-title: "Smart vs Dumb Components in React"
+title: "1.11 Smart vs Dumb Components in React"
 datePublished: 2026-06-13T10:29:41.509Z
 cuid: cmqc7rf1l00000ajh6sz5dtjl
-slug: smart-vs-dumb-components-in-react
+slug: 1-11-smart-vs-dumb-components-in-react
 
 ---
 
