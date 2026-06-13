@@ -1,8 +1,8 @@
 ---
-title: "Core React Architecture: Clean Data Flow, Smart/Dumb Components, and Modular Design"
+title: "1.9 Core React Architecture (Component, Container, Smart/Dumb, Data Flow)"
 datePublished: 2026-06-13T08:58:16.606Z
 cuid: cmqc4huv600000bkk13eh32vy
-slug: core-react-architecture-clean-data-flow-smart-dumb-components-and-modular-design
+slug: 1-9-core-react-architecture-component-container-smart-dumb-data-flow
 
 ---
 
