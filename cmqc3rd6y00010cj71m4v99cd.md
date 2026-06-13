@@ -1,8 +1,8 @@
 ---
-title: "Mastering Scalable React Routing: Feature-Based Route Grouping & Lazy Loading"
+title: "1.6 Feature-Based Route Grouping & Lazy Loading"
 datePublished: 2026-06-13T08:37:40.643Z
 cuid: cmqc3rd6y00010cj71m4v99cd
-slug: mastering-scalable-react-routing-feature-based-route-grouping-lazy-loading
+slug: 1-6-feature-based-route-grouping-lazy-loading
 
 ---
 
