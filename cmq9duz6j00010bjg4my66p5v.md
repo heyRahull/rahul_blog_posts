@@ -1,8 +1,8 @@
 ---
-title: "Clean Code Architecture: Naming Conventions & Documentation in React"
+title: "1.3 Naming Conventions & Documentation"
 datePublished: 2026-06-11T10:57:06.737Z
 cuid: cmq9duz6j00010bjg4my66p5v
-slug: clean-code-architecture-naming-conventions-documentation-in-react
+slug: 1-3-naming-conventions-documentation
 
 ---
 
