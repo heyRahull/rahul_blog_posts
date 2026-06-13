@@ -1,8 +1,8 @@
 ---
-title: "Enterprise Architecture: Mastering Feature-Based Folder Structure in React"
+title: "1.8 Feature-Based Folder Structure"
 datePublished: 2026-06-13T08:55:46.675Z
 cuid: cmqc4en6c00000bkya6nye2oj
-slug: enterprise-architecture-mastering-feature-based-folder-structure-in-react
+slug: 1-8-feature-based-folder-structure
 
 ---
 
