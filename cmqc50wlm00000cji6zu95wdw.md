@@ -1,8 +1,8 @@
 ---
-title: "Container vs Presentational Components Explained with API Flow"
+title: "1.10 Container vs Presentational Components Explained with API Flow"
 datePublished: 2026-06-13T09:13:05.313Z
 cuid: cmqc50wlm00000cji6zu95wdw
-slug: container-vs-presentational-components-explained-with-api-flow
+slug: 1-10-container-vs-presentational-components-explained-with-api-flow
 
 ---
 
