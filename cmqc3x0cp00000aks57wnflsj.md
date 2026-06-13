@@ -1,8 +1,8 @@
 ---
-title: "Robust Routing Architecture: Error Handling, Protected Routes, and Suspense in React"
+title: "1.7 Error Handling in React Router"
 datePublished: 2026-06-13T08:42:03.940Z
 cuid: cmqc3x0cp00000aks57wnflsj
-slug: robust-routing-architecture-error-handling-protected-routes-and-suspense-in-react
+slug: 1-7-error-handling-in-react-router
 
 ---
 
