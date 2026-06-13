@@ -1,8 +1,8 @@
 ---
-title: "Designing Enterprise-Grade Frontend Architectures in React"
+title: "1.1 Course Introduction & Overview"
 datePublished: 2026-06-11T14:11:59.503Z
 cuid: cmq9ktldg00000bhy8nc6ctwp
-slug: designing-enterprise-grade-frontend-architectures-in-react
+slug: 1-1-course-introduction-overview
 
 ---
 
