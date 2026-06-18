@@ -1,8 +1,8 @@
 ---
-title: "Atomic Design Pattern in React.js: Atoms, Molecules, and Organisms"
+title: "1.14 Atomic Design Pattern in React.js: Atoms, Molecules, and Organisms"
 datePublished: 2026-06-18T15:48:59.340Z
 cuid: cmqjodanb00000chwbp52epta
-slug: atomic-design-pattern-in-react-js-atoms-molecules-and-organisms
+slug: 1-14-atomic-design-pattern-in-react-js-atoms-molecules-and-organisms
 
 ---
 
