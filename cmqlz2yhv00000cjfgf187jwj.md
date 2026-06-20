@@ -6,6 +6,17 @@ slug: 1-1-reactjs-interview-experience
 
 ---
 
+### Table of Contents
+
+*   [Q1: Alternately Merging Two Strings](#heading-q1-problem-statement-alternately-merging-two-strings)
+    
+*   [Q2: What is Function Currying?](#heading-q2-what-is-function-currying-and-what-actual-problem-does-it-solve)
+    
+*   [Q3: Synchronous vs. Asynchronous Execution](#heading-q3-what-is-the-difference-between-synchronous-and-asynchronous-code-execution-in-javascript)
+    
+*   [Q4: What is Event Loop Latency?](#heading-q4-what-is-event-loop-latency-and-how-does-it-happen)
+    
+
 ## Q1: Problem Statement – Alternately Merging Two Strings
 
 **Problem:** You are given two strings, `str1` and `str2`. Write a function to merge them by alternating characters, starting with the first character of `str1`. If one string is longer than the other, append the remaining characters of the longer string to the end of the merged result.
