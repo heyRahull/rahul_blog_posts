@@ -249,24 +249,3 @@ button { color: red; }         /* Score: 0, 0, 0, 1  (Element score) */
 ```
 
 The **Universal Selector (**`*`**)** targets everything globally but has a specificity score of **0**, putting it at the absolute bottom of the priority ladder.
-
-* * *
-
-### The Perfect Blueprint Prompt for Next Time
-
-Save this exact prompt text. Next time you copy-paste an interview transcript, paste this prompt right along with it:
-
-```text
-Please convert the following raw interview transcript into a highly polished, beginner-friendly technical blog structured in a clean Question-and-Answer (Q&A) format. Follow these structural constraints perfectly:
-
-1. For actual coding tasks or algorithmic questions, format the question specifically as a "Problem Statement" containing the exact inputs, expected outputs, and a perfectly clean, optimal JavaScript code solution.
-2. For conceptual questions, completely ignore any incomplete or incorrect answers given by the candidate in the transcript. Write the technically perfect, easiest-to-understand explanation by yourself.
-3. Keep explanations highly conversational, direct, and visual. For advanced concepts like Function Currying, explicitly explain the "Actual Need" (what real-world problem it solves, why static constants fail, and how it handles dynamic runtime configuration). 
-4. For complex mechanics like Event Loop Latency, use a literal, step-by-step timeline example to demonstrate where the delay occurs.
-5. Include explicit HTML structures and CSS properties when explaining layout selectors or design rules (like Combinators and Specificity math).
-6. Organize sections cleanly using markdown headings, dividers, and bullet lists so it is optimized to be copied directly into an interview preparation notebook.
-
-Here is the transcript: 
-[PASTE YOUR TRANSCRIPT HERE]
-
-```
