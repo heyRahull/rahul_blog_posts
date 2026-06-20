@@ -6,11 +6,11 @@ slug: 1-1-reactjs-interview-experience
 
 ---
 
-## Q1: Problem Statement – Alternately Merging Two Strings
+### Q1: Problem Statement – Alternately Merging Two Strings
 
 **Problem:** You are given two strings, `str1` and `str2`. Write a function to merge them by alternating characters, starting with the first character of `str1`. If one string is longer than the other, append the remaining characters of the longer string to the end of the merged result.
 
-### Implementation:
+#### Implementation:
 
 ```javascript
 const str1 = "Pravin";
@@ -35,13 +35,13 @@ console.log(mergeAlternately(str1, str2));
 
 * * *
 
-## Q2: What is Function Currying, and what actual problem does it solve?
+### Q2: What is Function Currying, and what actual problem does it solve?
 
 **Answer:** Function currying is a technique where a function that expects multiple arguments is transformed into a nested series of functions that each take exactly **one** argument at a time (e.g., turning `sum(a, b)` into `sum(a)(b)`).
 
 **The Actual Need:** Without currying, if you have a function where certain arguments stay the same but the final argument changes, you are forced to type those identical configurations over and over again. Currying allows you to lock in those common values *once* to create highly specialized helper functions. This prevents code repetition and ensures that if a configuration value changes, you only have to update it in one single place.
 
-### The Shopping Cart E-Commerce Example:
+#### The Shopping Cart E-Commerce Example:
 
 Imagine you have an e-commerce store and want to calculate final prices after adding a flat **$5 shipping fee**.
 
@@ -59,11 +59,11 @@ const item3Total = addFiveDollarShipping(12); // $17 (Socks)
 
 ```
 
-> **Why not just use a standard constant?** Simple constants like `const SHIPPING = 5` only work for static, hardcoded values. Currying is essential when this configuration data is dynamic—like user roles, language preferences, or theme settings fetched on the fly at runtime per session.
+*(Note: Simple constants like* `const SHIPPING = 5` *only work for static, hardcoded values. Currying is essential when this configuration data is dynamic—like user roles, language preferences, or theme settings fetched on the fly at runtime.)*
 
 * * *
 
-## Q3: What is the difference between Synchronous and Asynchronous code execution in JavaScript?
+### Q3: What is the difference between Synchronous and Asynchronous code execution in JavaScript?
 
 **Answer:** \* **Synchronous:** JavaScript is natively a single-threaded language. It executes code sequentially, line-by-line. If a line of code takes a long time to run, it blocks everything beneath it.
 
@@ -72,13 +72,13 @@ const item3Total = addFiveDollarShipping(12); // $17 (Socks)
 
 * * *
 
-## Q4: What is Event Loop Latency, and how does it happen?
+### Q4: What is Event Loop Latency, and how does it happen?
 
 **Answer:** **Event Loop Latency** is the time delay between an asynchronous task landing in the callback queue (meaning it is 100% ready to run) and the moment it actually gets pushed into the Call Stack to execute.
 
 This happens because the Event Loop has one golden rule: **Never move tasks from the queue if the Call Stack is busy.** If your main thread is executing a heavy, time-consuming synchronous block of code, ready background tasks are forced to sit and wait in line, creating latency.
 
-### The Timeline Example:
+#### The Timeline Example:
 
 ```javascript
 setTimeout(() => console.log("Hello"), 1000); // 1-second background timer
@@ -95,7 +95,7 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 * * *
 
-## Q5: What is the difference between Null and Undefined?
+### Q5: What is the difference between Null and Undefined?
 
 **Answer:** \* `undefined`**:** JavaScript's default state. It means a variable has been declared, but has not been assigned a value yet.
 
@@ -104,7 +104,7 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 * * *
 
-## Q6: What is the difference between Functional Scope and Block Scope?
+### Q6: What is the difference between Functional Scope and Block Scope?
 
 **Answer:** \* **Functional Scope (**`var`**):** Variables are accessible anywhere inside the function they were created in, ignoring smaller blocks like loops or `if` conditions.
 
@@ -113,7 +113,7 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 * * *
 
-## Q7: What is the difference between Primitive and Non-Primitive data types?
+### Q7: What is the difference between Primitive and Non-Primitive data types?
 
 **Answer:** \* **Primitive Types:** Hold a single, unchangeable (immutable) value directly in stack memory (e.g., `String`, `Number`, `Boolean`, `null`, `undefined`).
 
@@ -122,7 +122,7 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 * * *
 
-## Q8: What is Hoisting and the Temporal Dead Zone (TDZ)?
+### Q8: What is Hoisting and the Temporal Dead Zone (TDZ)?
 
 **Answer:** **Hoisting** is JavaScript's default compilation behavior where variable and function declarations are allocated memory space before any line of code runs.
 
@@ -133,7 +133,7 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 * * *
 
-## Q9: What is the output of `isNaN('Pravin')` and why?
+### Q9: What is the output of `isNaN('Pravin')` and why?
 
 **Answer:** The output is `true`.
 
@@ -142,13 +142,13 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 * * *
 
-## Q10: Why do we use the Context API in React?
+### Q10: Why do we use the Context API in React?
 
 **Answer:** We use the Context API to prevent **prop drilling** (the annoying process of passing props down through multiple layers of intermediate components that don't actually need the data, just to reach a deeply nested child). Context creates a global data broadcast system so any child component can tap into the data directly.
 
 * * *
 
-## Q11: What is the core difference between State and Props in React?
+### Q11: What is the core difference between State and Props in React?
 
 **Answer:** \* **State:** Local data created and managed *inside* the component itself. The component can freely mutate its own state using its state setter function. When state updates, the component re-renders.
 
@@ -157,7 +157,7 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 * * *
 
-## Q12: What is the difference between the HTML tags `<em>` and `<i>`?
+### Q12: What is the difference between the HTML tags `<em>` and `<i>`?
 
 **Answer:** While both visually render text as italics in a browser, their structural meanings are completely different:
 
@@ -168,11 +168,11 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 * * *
 
-## Q13: Explain CSS Combinators with a code layout.
+### Q13: Explain CSS Combinators with a code layout.
 
 **Answer:** CSS Combinators let you precision-target elements based on how they are nested or situated next to each other.
 
-### Given this HTML structure:
+#### Given this HTML structure:
 
 ```html
 <div class="parent">
@@ -187,7 +187,7 @@ blockStackForFiveSeconds(); // Intense synchronous loop that takes 5 seconds
 
 ```
 
-### How Combinators work:
+#### How Combinators work:
 
 *   **Descendant (**`space`**):** Matches any matching element anywhere inside the container.
     
@@ -227,13 +227,13 @@ h3 ~ p { color: purple; }
 
 * * *
 
-## Q14: How does the CSS Specificity Hierarchy work?
+### Q14: How does the CSS Specificity Hierarchy work?
 
 **Answer:** When multiple CSS rules conflict over the same element, the browser calculates a mathematical score to decide which style wins. You can think of this score as a 4-digit hierarchy scale:
 
 $$\text{Inline Styles (1000)} > \text{ID Selectors (100)} > \text{Class / Pseudo-class (10)} > \text{Element / Tag (1)} > \text{Universal Selector (*) (0)}$$
 
-### Conflict Example:
+#### Conflict Example:
 
 ```html
 <button id="submit-btn" class="btn-primary" style="color: white;">Click Me</button>
@@ -249,3 +249,24 @@ button { color: red; }         /* Score: 0, 0, 0, 1  (Element score) */
 ```
 
 The **Universal Selector (**`*`**)** targets everything globally but has a specificity score of **0**, putting it at the absolute bottom of the priority ladder.
+
+* * *
+
+### The Perfect Blueprint Prompt for Next Time
+
+Save this exact prompt text. Next time you copy-paste an interview transcript, paste this prompt right along with it:
+
+```text
+Please convert the following raw interview transcript into a highly polished, beginner-friendly technical blog structured in a clean Question-and-Answer (Q&A) format. Follow these structural constraints perfectly:
+
+1. For actual coding tasks or algorithmic questions, format the question specifically as a "Problem Statement" containing the exact inputs, expected outputs, and a perfectly clean, optimal JavaScript code solution.
+2. For conceptual questions, completely ignore any incomplete or incorrect answers given by the candidate in the transcript. Write the technically perfect, easiest-to-understand explanation by yourself.
+3. Keep explanations highly conversational, direct, and visual. For advanced concepts like Function Currying, explicitly explain the "Actual Need" (what real-world problem it solves, why static constants fail, and how it handles dynamic runtime configuration). 
+4. For complex mechanics like Event Loop Latency, use a literal, step-by-step timeline example to demonstrate where the delay occurs.
+5. Include explicit HTML structures and CSS properties when explaining layout selectors or design rules (like Combinators and Specificity math).
+6. Organize sections cleanly using markdown headings, dividers, and bullet lists so it is optimized to be copied directly into an interview preparation notebook.
+
+Here is the transcript: 
+[PASTE YOUR TRANSCRIPT HERE]
+
+```
