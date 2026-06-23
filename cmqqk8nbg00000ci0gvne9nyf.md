@@ -98,6 +98,9 @@ This method wraps all database connections and framework setups inside an **Imme
 /* 
 Approach 1: Direct, Self-Executing Module Code inside index.js
 */
+import dns from "node:dns/promises";
+// Force Node.js to use Google and Cloudflare DNS resolvers to bypass the Windows bug
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 import mongoose from "mongoose";
 import express from "express";
 import { DB_NAME } from "./constants.js";
