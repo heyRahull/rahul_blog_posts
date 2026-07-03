@@ -140,3 +140,96 @@ app.put("/api/v1/echo/:id", async (req, res) => {
 ```
 
 * * *
+
+### Module 5: Permanent Resource Deletion (DELETE)
+
+We finished the final step of the CRUD cycle by building a route to permanently purge records from our database layer using dynamic routing.
+
+*   **Key Concept:** Just like an update (`PUT`), the deletion method requires specific execution targeting via dynamic URL parameters ([`req.params.id`](http://req.params.id)). We use Mongoose's `User.findByIdAndDelete()` method to target and drop the document, and we implement a check conditional statement (`if (!deletedUser)`) to make sure our system doesn't lose track of itself if a client submits an ID that doesn't exist anymore.
+    
+*   **The Complete Operational Code:**
+    
+
+```javascript
+import express from 'express';
+import mongoose from 'mongoose';
+
+const app = express();
+
+// 1. GLOBAL PARSING MIDDLEWARE
+app.use(express.json());
+
+// 2. MONGOOSE SCHEMA & MODEL DEFINITION
+const userSchema = new mongoose.Schema({
+    username: String,
+    email: String,
+    role: String
+});
+
+const User = mongoose.model('User', userSchema);
+
+// 3. CREATE ROUTE (POST)
+app.post("/api/v1/echo", async (req, res) => {
+    try {
+        const dataRecorded = await User.create(req.body);
+        res.status(201).json({ success: true, user: dataRecorded });
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Failed to save user data", error: err.message });
+    }
+});
+
+// 4. READ ROUTE (GET)
+app.get("/api/v1/echo", async (req, res) => {
+    try {
+        const allUsers = await User.find({});
+        res.status(200).json({ success: true, count: allUsers.length, users: allUsers });
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Failed to get user data", error: err.message });
+    }
+});
+
+// 5. UPDATE ROUTE (PUT)
+app.put("/api/v1/echo/:id", async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const updatedUser = await User.findByIdAndUpdate(userId, req.body, { new: true });
+
+        if (!updatedUser) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        res.status(200).json({ success: true, message: "User updated successfully", user: updatedUser });
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Failed to update user data", error: err.message });
+    }
+});
+
+// 6. DELETION ROUTE (DELETE)
+app.delete("/api/v1/echo/:id", async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const deletedUser = await User.findByIdAndDelete(userId);
+
+        if (!deletedUser) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "User Deleted Successfully",
+            deletedUser: deletedUser // Sends a confirmation block back of what was dropped
+        });
+    } catch (err) {
+        res.status(500).json({ success: false, message: "Failed to delete user", error: err.message });
+    }
+});
+
+// 7. EXTERNAL SYSTEM INVOCATION LAYER
+mongoose.connect('YOUR_NON_SRV_MONGODB_CONNECTION_STRING_HERE')
+    .then(() => console.log("Database Connected Successfully"))
+    .catch((err) => console.log("Database Connection error: ", err));
+
+app.listen(5000, () => {
+    console.log("Server is running on port 5000");
+});
+```
