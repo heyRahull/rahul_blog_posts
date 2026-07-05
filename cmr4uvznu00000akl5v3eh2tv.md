@@ -495,3 +495,36 @@ http://localhost:5000/api/v1/upload
     
 
 ![](https://cdn.hashnode.com/uploads/covers/6069d6891ed1783ab063459f/730498d0-88ea-4d2c-a92f-446c34f0fbb7.png align="center")
+
+## Module 7 : Password Encryption & Pre-Hooks
+
+Storing passwords as plain text leaves user data highly vulnerable. We implement a security perimeter using one-way cryptographic hashing before data ever touches persistent storage.
+
+*   **Key Concepts:**
+    
+
+1.  **One-Way Hashing vs. Encryption:** Encryption is a two-way process (can be decrypted with a key). Hashing is mathematically irreversible. Validation is achieved by comparing a new hash of the typed login input with the stored hash in the database.
+    
+2.  **Bcrypt Salt Rounds:** Salting adds a string of unique random data to the password input before hashing to eliminate vulnerabilities to pre-computed hash lookup tables (Rainbow Tables).
+    
+3.  **Mongoose Pre-Save Hooks:** Lifecycle triggers that intercept document operations. When executing asynchronous pre-save hooks (`async function`), modern Mongoose treats the resolution of the returned Promise as an automatic progression step, completely bypassing the manual execution of a `next()` callback function parameter.
+    
+4.  **The** `this` **Context Constraint:** We intentionally use standard function syntax (`async function()`) instead of ES6 Arrow Functions because arrow functions lexically bind `this`, breaking our ability to target document parameters (`this.isModified` or `this.password`).
+    
+
+*   **The Production Pre-Save Hashing Hook:**
+    
+
+```javascript
+userSchema.pre("save", async function () {
+    // Only scramble the password field if it's new or modified
+    if (!this.isModified("password")) return;
+
+    try {
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+    } catch (err) {
+        throw new Error(err.message);
+    }
+});
+```
