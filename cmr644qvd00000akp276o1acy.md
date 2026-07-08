@@ -133,7 +133,7 @@ app.listen(5000, () => { console.log("Server is running on port 5000"); });
 
 ## The Frontend: React with State-Driven Inline Editing
 
-Our React frontend does more than just render data—it smartly manages temporary interaction states to toggle between plain text layout and dynamic editing inputs.
+Our React frontend does more than just render data - it smartly manages temporary interaction states to toggle between plain text layout and dynamic editing inputs.
 
 Here is the code for `TodoComponent.jsx`:
 
