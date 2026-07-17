@@ -554,10 +554,6 @@ console.log(countCharacters(targetString));
 *   **Pseudo-Element:** Targets a specific sub-part of an element's structural content layout (e.g., `::before`, `::after`, `::first-line`). They are denoted using a **double colon (**`::`**)**.
     
 
-* * *
-
-Review these rules—especially the exact data outputs of array string additions (`[]+[]`) and pseudo-selector notation definitions (`:` vs `::`). They are common traps that highlight deep architectural knowledge!
-
 ## ─── JAVASCRIPT TYPES & ENGINE EQUATIONS ───
 
 ### Q1: Loose Equality & Falsy Values Puzzle (Output-Based)
@@ -781,8 +777,3 @@ console.log(countCharacters(targetString));
 *   **Pseudo-Class:** Targets a specific state changes of an existing element (e.g., `:hover`, `:active`, `:focus`). They are denoted using a **single colon (**`:`**)**.
     
 *   **Pseudo-Element:** Targets a specific sub-part of an element's structural content layout (e.g., `::before`, `::after`, `::first-line`). They are denoted using a **double colon (**`::`**)**.
-    
-
-* * *
-
-Review these rules—especially the exact data outputs of array string additions (`[]+[]`) and pseudo-selector notation definitions (`:` vs `::`). They are common traps that highlight deep architectural knowledge!
