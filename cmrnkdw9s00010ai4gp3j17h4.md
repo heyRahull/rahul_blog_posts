@@ -327,3 +327,462 @@ console.log(separateData(mixedArray));
 **Question:** What is a CSS group selector?
 
 *   **The Perfect Answer:** A group selector is a comma-separated list used to apply the exact same set of style rules to multiple selectors simultaneously. For example: `h1, h2, p, .custom-div { color: blue; }`. This keeps stylesheets DRY (Don't Repeat Yourself) by preventing code duplication.
+    
+
+## ─── JAVASCRIPT TYPES & ENGINE EQUATIONS ───
+
+### Q1: Loose Equality & Falsy Values Puzzle (Output-Based)
+
+**Question:** What is the output of the following checks and why?
+
+```javascript
+var x = 0;
+var y = "0";
+var z = false;
+
+console.log(x == y);
+console.log(x == z);
+
+```
+
+*   **The Perfect Answer:** Both expressions evaluate to `true`.
+    
+*   **The Core Concept:**
+    
+*   `x == y`**:** Loose equality triggers **implicit type coercion**. When comparing a number to a string, JavaScript converts the string to a number under the hood. `"0"` becomes `0`, matching `x`, so it returns `true`.
+    
+*   `x == z`**:** JavaScript converts boolean values to numbers during loose comparison. `false` converts to `0` (and `true` to `1`). Because `0 == 0`, this also evaluates to `true`.
+    
+
+### Q2: `null` vs `undefined` Equality Checks
+
+**Question:** What do `null == undefined` and `null === undefined` return, and what are their data types?
+
+*   **The Perfect Answer:**
+    
+*   `null == undefined` evaluates to `true` because JavaScript explicitly treats them as loosely equal to each other.
+    
+*   `null === undefined` evaluates to `false` because they are entirely different data types.
+    
+*   **The Types:** `typeof undefined` is `"undefined"`, whereas `typeof null` returns `"object"`. Note: The candidate in the video incorrectly claimed that the type of null is "undefined" or an object; remember, it is treated as an object due to a historical quirk in JavaScript.
+    
+
+### Q3: Direct Primitive Evaluation: `NaN`, `[] + []`, and `{} + {}`
+
+**Question:** What are the evaluation outputs of `typeof appointments/NaN`, `[] + []`, and `{} + {}`?
+
+*   **The Perfect Answer:**
+    
+*   `typeof NaN` returns `"number"`. Even though `NaN` stands for "Not-a-Number", it is technically categorized under the numeric type system in JavaScript.
+    
+*   `[] + []` returns an **empty string (**`""`**)**. The candidate incorrectly guessed `2` or `0`. During addition, JavaScript attempts to convert arrays into primitive values. An empty array strings out to `""`, resulting in `"" + ""` which yields an empty string.
+    
+*   `{} + {}` behaves conditionally based on context. In standard console evaluations, JavaScript interprets the first `{}` as an empty code block and treats `+ {}` as a unary plus operation on an empty object, returning `NaN`. However, if evaluated directly as an expression (e.g., `console.log({} + {})`), it treats both as objects, coerces them to strings, and returns `"[object Object][object Object]"`.
+    
+
+### Q4: JavaScript Native Errors
+
+**Question:** Name the common native error types built into JavaScript.
+
+*   **The Perfect Answer:** The candidate mistakenly guessed "UI Error". The native error structures are:
+    
+*   `ReferenceError`**:** Thrown when referencing a variable that does not exist in the current scope.
+    
+*   `TypeError`**:** Thrown when an operation is performed on an incompatible data type (e.g., invoking a string as a function).
+    
+*   `SyntaxError`**:** Thrown when the interpreter encounters code that breaks standard language syntax rules.
+    
+*   `RangeError`**:** Thrown when a numeric value falls outside its allowable range limits.
+    
+
+### Q5: Understanding the Temporal Dead Zone (TDZ)
+
+**Question:** Explain what the Temporal Dead Zone (TDZ) is and point out exactly where it lies in a program.
+
+*   **The Perfect Answer:** The Temporal Dead Zone is the specific region of a program execution block from the start of the block scope until the moment the variable is officially declared.
+    
+*   **The Rules:** Variables declared with `let` and `const` are hoisted, but they are not initialized with a default value. Attempting to access them within this zone throws a `ReferenceError`.
+    
+
+```javascript
+function checkTDZ() {
+  // === TEMPORAL DEAD ZONE FOR variable 'a' START ===
+  console.log(a); // Throws ReferenceError!
+  // === TEMPORAL DEAD ZONE FOR variable 'a' END ===
+  
+  let a = 10; // Variable is initialized here.
+  console.log(a); // Safe to access: prints 10.
+}
+
+```
+
+### Q6: Function Expressions vs Anonymous Functions & Hoisting
+
+**Question:** What is an anonymous function, and are function expressions or arrow functions hoisted?
+
+*   **The Perfect Answer:** An **anonymous function** is a function declaration defined without an explicit name identifier. **Function expressions** and **arrow functions** are not structurally hoisted as functions. If they are assigned to `var`, the variable initialization hoists as `undefined`. If assigned to `let` or `const`, they remain trapped inside the Temporal Dead Zone until execution reaches their assignment lines.
+    
+
+### Q7: Mathematical Operations on Strings
+
+**Question:** What does evaluation of `"Raza" - "Ali"` return?
+
+*   **The Perfect Answer:** It evaluates to `NaN` **(Not-a-Number)**. The subtraction operator (`-`) forces arithmetic type conversion. Because standard text strings cannot be mathematically converted into numbers, the operation fails and yields `NaN`.
+    
+
+### Q8: Optional Chaining Purpose (`?.`)
+
+**Question:** Why do we use optional chaining (`?.`) instead of standard dot notation?
+
+*   **The Perfect Answer:** Optional chaining permits developers to safely read nested properties deep within an object tree without explicitly checking every step of the reference path for validity. If a reference is `null` or `undefined`, the expression short-circuits gracefully and returns `undefined` rather than throwing a runtime crash error.
+    
+
+### Q9: Native Pop-up Frameworks
+
+**Question:** Name the three types of native window pop-up interfaces provided by JavaScript.
+
+*   **The Perfect Answer:**
+    
+*   `alert()`**:** Displays a simple informational modal window with an "OK" confirmation option.
+    
+*   `confirm()`**:** Displays a modal interface offering conditional "OK" and "Cancel" choices, returning a boolean value.
+    
+*   `prompt()`**:** Opens an input dialog window enabling users to submit text entries directly back to the script.
+    
+
+* * *
+
+## ─── LIVE RUN CODING EXERCISES ───
+
+### Q10: Printing Only Negative Numbers from an Array
+
+**Question:** Write a function that takes an array containing positive and negative values and returns a clean array containing only the negative entries.
+
+*   **The Perfect Answer:**
+    
+
+```javascript
+const mixedNumbers = [100, -200, 300, -400, 800, -800];
+
+function extractNegatives(arr) {
+  // Use filter to cleanly isolate values below 0
+  return arr.filter(num => num < 0);
+}
+
+console.log(extractNegatives(mixedNumbers)); // Output: [-200, -400, -800]
+
+```
+
+### Q11: Calculate a Factorial via Recursion
+
+**Question:** Write a recursive function to compute the factorial of a given number (e.g., 10).
+
+*   **The Perfect Answer:**
+    
+
+```javascript
+function getFactorial(num) {
+  // Base case termination check
+  if (num === 0 || num === 1) {
+    return 1;
+  }
+  // Recursive case: multiply number by structural decrement
+  return num * getFactorial(num - 1);
+}
+
+console.log(getFactorial(10)); // Output: 3628800
+
+```
+
+### Q12: Character Count Tracker
+
+**Question:** Given a string string variable like `"Ali Raza"`, write a function that returns an object mapping the total occurrences of each unique character present.
+
+*   **The Perfect Answer:**
+    
+
+```javascript
+const targetString = "Ali Raza";
+
+function countCharacters(str) {
+  const charMap = {};
+  // Sanitize string to lowercase and remove spacing if needed
+  const cleanStr = str.toLowerCase().replace(/\s+/g, '');
+
+  for (let char of cleanStr) {
+    charMap[char] = (charMap[char] || 0) + 1;
+  }
+  
+  return charMap;
+}
+
+console.log(countCharacters(targetString)); 
+// Output: { a: 3, l: 1, i: 1, r: 1, z: 1 }
+
+```
+
+* * *
+
+## ─── STRUCTURAL HTML & STYLING ───
+
+### Q13: Image Maps & Semantic Entities
+
+**Question:** What are HTML Entities and what is an HTML Image Map?
+
+*   **The Perfect Answer:**
+    
+*   **HTML Entities:** Specialized string character sets (e.g., `&nbsp;` for non-breaking spaces or `&copy;` for the copyright icon) used to display reserved characters or symbols that could otherwise interfere with HTML parsing engines.
+    
+*   **Image Map:** A system achieved by nesting `<map>` and `<area>` tags inside an image component. It maps out coordinates over an image layout, turning specific coordinates into independent, clickable hyperlinks.
+    
+
+### Q14: CSS Implementation Models & Specificity Priorities
+
+**Question:** What are the three methods of styling, and which holds the highest specificity weight?
+
+*   **The Perfect Answer:** The three core integration patterns are **Inline**, **Internal (Embedded)**, and **External stylesheets**. **Inline styles** (written directly inside the element's `style` attribute) command the highest priority weight and override rules declared externally.
+    
+
+### Q15: Advanced Syntax Selectors: Pseudo-Classes vs Pseudo-Elements
+
+**Question:** What is the distinction between a Pseudo-Class and a Pseudo-Element, and how are they syntactically denoted?
+
+*   **The Perfect Answer:**
+    
+*   **Pseudo-Class:** Targets a specific state changes of an existing element (e.g., `:hover`, `:active`, `:focus`). They are denoted using a **single colon (**`:`**)**.
+    
+*   **Pseudo-Element:** Targets a specific sub-part of an element's structural content layout (e.g., `::before`, `::after`, `::first-line`). They are denoted using a **double colon (**`::`**)**.
+    
+
+* * *
+
+Review these rules—especially the exact data outputs of array string additions (`[]+[]`) and pseudo-selector notation definitions (`:` vs `::`). They are common traps that highlight deep architectural knowledge!
+
+## ─── JAVASCRIPT TYPES & ENGINE EQUATIONS ───
+
+### Q1: Loose Equality & Falsy Values Puzzle (Output-Based)
+
+**Question:** What is the output of the following checks and why?
+
+```javascript
+var x = 0;
+var y = "0";
+var z = false;
+
+console.log(x == y);
+console.log(x == z);
+
+```
+
+*   **The Perfect Answer:** Both expressions evaluate to `true`.
+    
+*   **The Core Concept:**
+    
+*   `x == y`**:** Loose equality triggers **implicit type coercion**. When comparing a number to a string, JavaScript converts the string to a number under the hood. `"0"` becomes `0`, matching `x`, so it returns `true`.
+    
+*   `x == z`**:** JavaScript converts boolean values to numbers during loose comparison. `false` converts to `0` (and `true` to `1`). Because `0 == 0`, this also evaluates to `true`.
+    
+
+### Q2: `null` vs `undefined` Equality Checks
+
+**Question:** What do `null == undefined` and `null === undefined` return, and what are their data types?
+
+*   **The Perfect Answer:**
+    
+*   `null == undefined` evaluates to `true` because JavaScript explicitly treats them as loosely equal to each other.
+    
+*   `null === undefined` evaluates to `false` because they are entirely different data types.
+    
+*   **The Types:** `typeof undefined` is `"undefined"`, whereas `typeof null` returns `"object"`. Note: The candidate in the video incorrectly claimed that the type of null is "undefined" or an object; remember, it is treated as an object due to a historical quirk in JavaScript.
+    
+
+### Q3: Direct Primitive Evaluation: `NaN`, `[] + []`, and `{} + {}`
+
+**Question:** What are the evaluation outputs of `typeof appointments/NaN`, `[] + []`, and `{} + {}`?
+
+*   **The Perfect Answer:**
+    
+*   `typeof NaN` returns `"number"`. Even though `NaN` stands for "Not-a-Number", it is technically categorized under the numeric type system in JavaScript.
+    
+*   `[] + []` returns an **empty string (**`""`**)**. The candidate incorrectly guessed `2` or `0`. During addition, JavaScript attempts to convert arrays into primitive values. An empty array strings out to `""`, resulting in `"" + ""` which yields an empty string.
+    
+*   `{} + {}` behaves conditionally based on context. In standard console evaluations, JavaScript interprets the first `{}` as an empty code block and treats `+ {}` as a unary plus operation on an empty object, returning `NaN`. However, if evaluated directly as an expression (e.g., `console.log({} + {})`), it treats both as objects, coerces them to strings, and returns `"[object Object][object Object]"`.
+    
+
+### Q4: JavaScript Native Errors
+
+**Question:** Name the common native error types built into JavaScript.
+
+*   **The Perfect Answer:** The candidate mistakenly guessed "UI Error". The native error structures are:
+    
+*   `ReferenceError`**:** Thrown when referencing a variable that does not exist in the current scope.
+    
+*   `TypeError`**:** Thrown when an operation is performed on an incompatible data type (e.g., invoking a string as a function).
+    
+*   `SyntaxError`**:** Thrown when the interpreter encounters code that breaks standard language syntax rules.
+    
+*   `RangeError`**:** Thrown when a numeric value falls outside its allowable range limits.
+    
+
+### Q5: Understanding the Temporal Dead Zone (TDZ)
+
+**Question:** Explain what the Temporal Dead Zone (TDZ) is and point out exactly where it lies in a program.
+
+*   **The Perfect Answer:** The Temporal Dead Zone is the specific region of a program execution block from the start of the block scope until the moment the variable is officially declared.
+    
+*   **The Rules:** Variables declared with `let` and `const` are hoisted, but they are not initialized with a default value. Attempting to access them within this zone throws a `ReferenceError`.
+    
+
+```javascript
+function checkTDZ() {
+  // === TEMPORAL DEAD ZONE FOR variable 'a' START ===
+  console.log(a); // Throws ReferenceError!
+  // === TEMPORAL DEAD ZONE FOR variable 'a' END ===
+  
+  let a = 10; // Variable is initialized here.
+  console.log(a); // Safe to access: prints 10.
+}
+
+```
+
+### Q6: Function Expressions vs Anonymous Functions & Hoisting
+
+**Question:** What is an anonymous function, and are function expressions or arrow functions hoisted?
+
+*   **The Perfect Answer:** An **anonymous function** is a function declaration defined without an explicit name identifier. **Function expressions** and **arrow functions** are not structurally hoisted as functions. If they are assigned to `var`, the variable initialization hoists as `undefined`. If assigned to `let` or `const`, they remain trapped inside the Temporal Dead Zone until execution reaches their assignment lines.
+    
+
+### Q7: Mathematical Operations on Strings
+
+**Question:** What does evaluation of `"Raza" - "Ali"` return?
+
+*   **The Perfect Answer:** It evaluates to `NaN` **(Not-a-Number)**. The subtraction operator (`-`) forces arithmetic type conversion. Because standard text strings cannot be mathematically converted into numbers, the operation fails and yields `NaN`.
+    
+
+### Q8: Optional Chaining Purpose (`?.`)
+
+**Question:** Why do we use optional chaining (`?.`) instead of standard dot notation?
+
+*   **The Perfect Answer:** Optional chaining permits developers to safely read nested properties deep within an object tree without explicitly checking every step of the reference path for validity. If a reference is `null` or `undefined`, the expression short-circuits gracefully and returns `undefined` rather than throwing a runtime crash error.
+    
+
+### Q9: Native Pop-up Frameworks
+
+**Question:** Name the three types of native window pop-up interfaces provided by JavaScript.
+
+*   **The Perfect Answer:**
+    
+*   `alert()`**:** Displays a simple informational modal window with an "OK" confirmation option.
+    
+*   `confirm()`**:** Displays a modal interface offering conditional "OK" and "Cancel" choices, returning a boolean value.
+    
+*   `prompt()`**:** Opens an input dialog window enabling users to submit text entries directly back to the script.
+    
+
+* * *
+
+## ─── LIVE RUN CODING EXERCISES ───
+
+### Q10: Printing Only Negative Numbers from an Array
+
+**Question:** Write a function that takes an array containing positive and negative values and returns a clean array containing only the negative entries.
+
+*   **The Perfect Answer:**
+    
+
+```javascript
+const mixedNumbers = [100, -200, 300, -400, 800, -800];
+
+function extractNegatives(arr) {
+  // Use filter to cleanly isolate values below 0
+  return arr.filter(num => num < 0);
+}
+
+console.log(extractNegatives(mixedNumbers)); // Output: [-200, -400, -800]
+
+```
+
+### Q11: Calculate a Factorial via Recursion
+
+**Question:** Write a recursive function to compute the factorial of a given number (e.g., 10).
+
+*   **The Perfect Answer:**
+    
+
+```javascript
+function getFactorial(num) {
+  // Base case termination check
+  if (num === 0 || num === 1) {
+    return 1;
+  }
+  // Recursive case: multiply number by structural decrement
+  return num * getFactorial(num - 1);
+}
+
+console.log(getFactorial(10)); // Output: 3628800
+
+```
+
+### Q12: Character Count Tracker
+
+**Question:** Given a string string variable like `"Ali Raza"`, write a function that returns an object mapping the total occurrences of each unique character present.
+
+*   **The Perfect Answer:**
+    
+
+```javascript
+const targetString = "Ali Raza";
+
+function countCharacters(str) {
+  const charMap = {};
+  // Sanitize string to lowercase and remove spacing if needed
+  const cleanStr = str.toLowerCase().replace(/\s+/g, '');
+
+  for (let char of cleanStr) {
+    charMap[char] = (charMap[char] || 0) + 1;
+  }
+  
+  return charMap;
+}
+
+console.log(countCharacters(targetString)); 
+// Output: { a: 3, l: 1, i: 1, r: 1, z: 1 }
+
+```
+
+* * *
+
+## ─── STRUCTURAL HTML & STYLING ───
+
+### Q13: Image Maps & Semantic Entities
+
+**Question:** What are HTML Entities and what is an HTML Image Map?
+
+*   **The Perfect Answer:**
+    
+*   **HTML Entities:** Specialized string character sets (e.g., `&nbsp;` for non-breaking spaces or `&copy;` for the copyright icon) used to display reserved characters or symbols that could otherwise interfere with HTML parsing engines.
+    
+*   **Image Map:** A system achieved by nesting `<map>` and `<area>` tags inside an image component. It maps out coordinates over an image layout, turning specific coordinates into independent, clickable hyperlinks.
+    
+
+### Q14: CSS Implementation Models & Specificity Priorities
+
+**Question:** What are the three methods of styling, and which holds the highest specificity weight?
+
+*   **The Perfect Answer:** The three core integration patterns are **Inline**, **Internal (Embedded)**, and **External stylesheets**. **Inline styles** (written directly inside the element's `style` attribute) command the highest priority weight and override rules declared externally.
+    
+
+### Q15: Advanced Syntax Selectors: Pseudo-Classes vs Pseudo-Elements
+
+**Question:** What is the distinction between a Pseudo-Class and a Pseudo-Element, and how are they syntactically denoted?
+
+*   **The Perfect Answer:**
+    
+*   **Pseudo-Class:** Targets a specific state changes of an existing element (e.g., `:hover`, `:active`, `:focus`). They are denoted using a **single colon (**`:`**)**.
+    
+*   **Pseudo-Element:** Targets a specific sub-part of an element's structural content layout (e.g., `::before`, `::after`, `::first-line`). They are denoted using a **double colon (**`::`**)**.
+    
+
+* * *
+
+Review these rules—especially the exact data outputs of array string additions (`[]+[]`) and pseudo-selector notation definitions (`:` vs `::`). They are common traps that highlight deep architectural knowledge!
